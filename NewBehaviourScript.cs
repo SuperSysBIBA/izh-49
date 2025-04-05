@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float speedFactor = 4f;
+           // Start is called before the first frame update
+    void OnTriggerEnter(Collider other)
     {
-        
+        other.GetComponent<FirstPersonMovement>().runSpeed *=speedFactor;
     }
 
     // Update is called once per frame
-    void Update()
+    void OnTriggerExit(Collider other)
     {
-        print("cricets");
+         other.GetComponent<FirstPersonMovement>().runSpeed /=speedFactor;
     }
 }
